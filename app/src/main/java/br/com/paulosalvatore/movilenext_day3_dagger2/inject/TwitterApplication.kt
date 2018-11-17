@@ -1,10 +1,12 @@
-package br.com.paulosalvatore.movilenext_day3_dagger2
+package br.com.paulosalvatore.movilenext_day3_dagger2.inject
 
 import javax.inject.Inject
 
-class TwitterApplication : Runnable {
-    @Inject lateinit var tweeter: Tweeter
-    @Inject lateinit var timeline: Timeline
+class TwitterApplication @Inject constructor() : Runnable {
+    @Inject
+    lateinit var tweeter: Tweeter
+    @Inject
+    lateinit var timeline: Timeline
 
     override fun run() {
         tweeter.tweet("Hello, #DependencyInjection")

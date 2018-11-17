@@ -1,8 +1,9 @@
-package br.com.paulosalvatore.movilenext_day3_dagger2
+package br.com.paulosalvatore.movilenext_day3_dagger2.inject
 
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import javax.inject.Inject
+import javax.inject.Scope
 import javax.inject.Singleton
 
 data class Tweet(val tweet: String)
@@ -58,3 +59,6 @@ fun main() {
 class Streaming @Inject constructor() {
     fun register(app: TwitterApplication) { /* ... */ }
 }
+
+@Scope
+annotation class User
