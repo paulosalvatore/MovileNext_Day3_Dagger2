@@ -2,9 +2,7 @@ package br.com.paulosalvatore.movilenext_day3_dagger2
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import br.com.paulosalvatore.movilenext_day3_dagger2.inject.DaggerTwitterComponent
-import br.com.paulosalvatore.movilenext_day3_dagger2.inject.NetworkModule
-import br.com.paulosalvatore.movilenext_day3_dagger2.inject.TwitterModule
+import br.com.paulosalvatore.movilenext_day3_dagger2.inject.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,11 +10,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val component = DaggerTwitterComponent.builder()
+        val apiComponent = DaggerApiComponent.create()
+
+        val twitterComponent = DaggerTwitterComponent.builder()
+            .apiComponent(apiComponent)
             .twitterModule(TwitterModule("Paulo Salvatore"))
             .build()
 
-        component.app().run()
+//        val app = TwitterApplication()
+//        component.injectApp(app).run()
+
+        twitterComponent.app().run()
 
         /*
 

@@ -1,4 +1,4 @@
-package br.com.paulosalvatore.movilenext_day3_dagger2
+package br.com.paulosalvatore.movilenext_day3_dagger2.inject
 
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -27,7 +27,6 @@ class Timeline(
     }
 }
 
-@Singleton
 class TwitterApi @Inject constructor(
     private val client: OkHttpClient
 ) {
